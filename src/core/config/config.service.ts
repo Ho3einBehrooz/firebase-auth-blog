@@ -8,7 +8,7 @@ import { join } from 'path';
 
 @Injectable()
 class Config {
-  constructor(private env: { [k: string]: string | undefined }) {}
+  constructor(private env: { [k: string]: string | undefined }) { }
 
   private getValue(key: string, throwOnMissing = true): string {
     const value = this.env[key];
@@ -67,6 +67,20 @@ class Config {
       retryAttempts: 10,
       retryDelay: 3000,
     };
+  }
+
+  public firebaseConfig() {
+    return {
+      base64: this.getValue('FIREBASE_SERVICE_ACCOUNT_BASE64'),
+      options: {},
+      auth: {
+        config: {
+          // extractor: ExtractJwt.fromAuthHeaderAsBearerToken(),
+          checkRevoked: true,
+          validateRole: true,
+        },
+      },
+    }
   }
 }
 
