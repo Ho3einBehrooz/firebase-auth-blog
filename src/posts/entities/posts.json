@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Article 1",
+    "content": "Test content for article 1",
+    "image": "no image"
+  },
+  {
+    "title": "Article 2",
+    "content": "Test content for article 2",
+    "image": "no image"
+  },
+  {
+    "title": "Article 3",
+    "content": "Test content for article 3",
+    "image": "no image"
+  },
+  {
+    "title": "Article 4",
+    "content": "Test content for article 4",
+    "image": "no image"
+  }
+]

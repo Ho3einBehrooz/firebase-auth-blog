@@ -43,6 +43,10 @@ class Config {
     }
   }
 
+  public getDataBaseName(): string {
+    return this.getValue('DATABASE_NAME');
+  }
+
   public getTypeOrmConfig(): TypeOrmModuleOptions {
     return {
       name: this.getValue('DATABASE_NAME'),
@@ -57,7 +61,7 @@ class Config {
           : this.getValue('DATABASE_NAME'),
       entities: [
         join(__dirname, '..', '..', '/**/**/*{.js,.ts}'),
-        join(__dirname, '..', '..', '/common/entities/*{.js,.ts}'),
+        join(__dirname, '..', '/common/entities/*{.js,.ts}'),
       ],
       synchronize: true,
       retryAttempts: 10,
