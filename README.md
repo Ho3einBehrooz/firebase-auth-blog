@@ -56,3 +56,20 @@ Use this endpoint to generate server token for use it in client apllication: "PO
 </n>
 
 Firebase token generator: https://www.firebasejwt.com/
+</n>
+
+
+## Built With
+
+* [Nest](https://github.com/nestjs/nest)  - The framework used
+
+* [TypeORM](https://typeorm.io/) - database modeling for Nodejs
+
+* [node.js](https://nodejs.org/en/)- Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine
+
+* [FirebaseAdmin](https://github.com/firebase/firebase-admin-node) Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more.
+
+
+## Authors
+
+*  **Hossein Behrooz** - [github](https://github.com/Ho3einBehrooz)
