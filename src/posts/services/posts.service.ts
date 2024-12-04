@@ -13,7 +13,7 @@ export class PostsService {
   constructor(
     private readonly blogsRepository: PostsRepository,
     private readonly loggerService: PinoLoggerService,
-  ) {}
+  ) { }
 
   async getAll(query: PostsQueryDto): Promise<ListResult<Posts>> {
     const { data, count } = await this.blogsRepository.getAll(query);
@@ -45,9 +45,7 @@ export class PostsService {
     }
   }
 
-  async update(postId: number, dto: UpdatePostDto): Promise<Posts> {
-    const post = await this.getById(postId);
-
+  async update(post: Posts, dto: UpdatePostDto): Promise<Posts> {
     try {
       const updatedPost = await this.blogsRepository.update(post, dto);
 
@@ -60,8 +58,6 @@ export class PostsService {
   }
 
   async delete(postId: number): Promise<DeleteResult> {
-    await this.getById(postId);
-
     try {
       await this.blogsRepository.delete(postId);
 

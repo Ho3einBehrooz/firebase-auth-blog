@@ -89,6 +89,10 @@ class Config {
   public getFirebaseBase64Config(): string {
     return this.getValue('FIREBASE_SERVICE_ACCOUNT_BASE64');
   }
+
+  public getImagePath(): string {
+    return this.getValue('IMAGESPATH');
+  }
 }
 
 const configService = new Config(process.env);

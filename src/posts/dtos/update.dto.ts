@@ -1,5 +1,5 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { IsOptional, IsNotEmpty, IsString } from 'class-validator';
+import { IsOptional, IsString, Matches } from 'class-validator';
 
 export class UpdatePostDto {
   @ApiPropertyOptional()
@@ -14,6 +14,6 @@ export class UpdatePostDto {
 
   @ApiPropertyOptional()
   @IsOptional()
-  @IsString()
+  @Matches(/data:image\/(\w*);base64,/m, { message: 'image must be base64' })
   image?: string;
 }
