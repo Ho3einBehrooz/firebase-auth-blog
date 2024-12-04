@@ -1,4 +1,4 @@
-import { Controller, UsePipes, Get, Param, Query, Post, Body, Put, Delete } from '@nestjs/common';
+import { Controller, SetMetadata, UsePipes, Get, Param, Query, Post, Body, Put, Delete } from '@nestjs/common';
 import { ApiTags, ApiOkResponse, ApiSecurity } from '@nestjs/swagger';
 import { Posts } from '../entities/posts.entity';
 import { PostsService } from '../services/posts.service';
@@ -15,10 +15,11 @@ import DeleteResultResponseExample from 'src/core/swagger/examples/delete.exampl
 @ApiTags('Posts')
 @Controller('posts')
 export class PostsController {
-  constructor(private readonly postsService: PostsService) {}
+  constructor(private readonly postsService: PostsService) { }
 
   @Get()
   @ApiSecurity('bearer')
+  @SetMetadata('access', ['ADMIN', 'USER'])
   @ApiOkResponse({ schema: { example: PostsListResponseExample } })
   @UsePipes(PaginationDefaultValuesPipe)
   getAll(@Query() query: PostsQueryDto): Promise<ListResult<Posts>> {
@@ -27,6 +28,7 @@ export class PostsController {
 
   @Get(':id')
   @ApiSecurity('bearer')
+  @SetMetadata('access', ['ADMIN', 'USER'])
   @ApiOkResponse({ schema: { example: PostResponseExample } })
   getById(@Param() { id }: IdParam): Promise<Posts> {
     return this.postsService.getById(id);
@@ -34,7 +36,7 @@ export class PostsController {
 
   @Post()
   @ApiSecurity('bearer')
-  // @SetMetadata('access', ['create-news'])
+  @SetMetadata('access', ['ADMIN'])
   @UsePipes(ImageFixerPipe)
   @ApiOkResponse({ schema: { example: PostResponseExample } })
   create(@Body() dto: CreatePostDto): Promise<Posts> {
@@ -43,7 +45,7 @@ export class PostsController {
 
   @Put(':postId')
   @ApiSecurity('bearer')
-  // @SetMetadata('access', ['update-news'])
+  @SetMetadata('access', ['ADMIN'])
   @UsePipes(ImageFixerPipe)
   @ApiOkResponse({ schema: { example: PostResponseExample } })
   update(@Body() dto: UpdatePostDto, @Param('postId') postId: number): Promise<Posts> {
@@ -52,7 +54,7 @@ export class PostsController {
 
   @Delete(':postId')
   @ApiSecurity('bearer')
-  // @SetMetadata('access', ['delete-news'])
+  @SetMetadata('access', ['ADMIN'])
   @ApiOkResponse({ schema: { example: DeleteResultResponseExample } })
   delete(@Param('postId') postId: number): Promise<DeleteResult> {
     return this.postsService.delete(postId);

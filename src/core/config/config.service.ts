@@ -2,7 +2,7 @@ import { config } from 'dotenv';
 
 config();
 
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { join } from 'path';
 
@@ -43,6 +43,23 @@ class Config {
     }
   }
 
+  public getAuthExpireTime(): string {
+    try {
+      const expireTime = this.getValue('JWT_EXPIRES_IN');
+      if (!expireTime) {
+        throw new InternalServerErrorException('JWT_EXPIRES_IN key not found');
+      }
+
+      return expireTime;
+    } catch (error) {
+      return '86400';
+    }
+  }
+
+  public getAuthSecretKey(): string {
+    return this.getValue('JWT_SECRET');
+  }
+
   public getDataBaseName(): string {
     return this.getValue('DATABASE_NAME');
   }
@@ -69,18 +86,8 @@ class Config {
     };
   }
 
-  public firebaseConfig() {
-    return {
-      base64: this.getValue('FIREBASE_SERVICE_ACCOUNT_BASE64'),
-      options: {},
-      auth: {
-        config: {
-          // extractor: ExtractJwt.fromAuthHeaderAsBearerToken(),
-          checkRevoked: true,
-          validateRole: true,
-        },
-      },
-    }
+  public getFirebaseBase64Config(): string {
+    return this.getValue('FIREBASE_SERVICE_ACCOUNT_BASE64');
   }
 }
 

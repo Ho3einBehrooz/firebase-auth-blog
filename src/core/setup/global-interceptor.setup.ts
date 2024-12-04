@@ -1,6 +1,6 @@
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { PinoLoggerService } from '@core/logger/logger.service';
-import { LogRequestInterceptor } from '@core/transform/log-request.interceptor';
+import { LogRequestInterceptor } from '@core/interceptors/log-request.interceptor';
 
 const setupInterceptor = ({
   app,

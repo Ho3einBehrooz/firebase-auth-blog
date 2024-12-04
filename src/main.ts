@@ -9,6 +9,7 @@ import {
   setupValidation,
   setupInterceptor,
   setupSwagger,
+  setupGlobalGuards,
 } from '@core/setup';
 import { PinoLoggerService } from '@core/logger/logger.service';
 import { NodeEnvironment } from 'src/common/abstractions/node-environment.enum';
@@ -30,6 +31,8 @@ async function bootstrap() {
   if (environment != NodeEnvironment.LOCAL) {
     setupInterceptor({ app, logger });
   }
+
+  setupGlobalGuards(app);
 
   // app starts at the specific port
   const { host, port } = configService.getHostAndPort();
