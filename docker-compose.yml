@@ -30,9 +30,7 @@ services:
     image: postgres
     container_name: postgres
     environment:
-      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=nestjs
     restart: unless-stopped
     logging:
       driver: json-file
