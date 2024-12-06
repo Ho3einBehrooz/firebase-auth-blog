@@ -63,7 +63,7 @@ Firebase token generator: https://www.firebasejwt.com/
 
 * [Nest](https://github.com/nestjs/nest)  - The framework used
 
-* [TypeORM](https://typeorm.io/) - database modeling for Nodejs
+* [TypeORM](https://typeorm.io/) - Database modeling for Nodejs
 
 * [node.js](https://nodejs.org/en/)- Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine
 
