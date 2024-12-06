@@ -67,7 +67,7 @@ Firebase token generator: https://www.firebasejwt.com/
 
 * [node.js](https://nodejs.org/en/)- Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine
 
-* [FirebaseAdmin](https://github.com/firebase/firebase-admin-node) Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server. It features solid transaction support, relations, eager and lazy loading, read replication and more.
+* [FirebaseAdmin](https://github.com/firebase/firebase-admin-node) Admin SDK for using firebase.
 
 
 ## Authors
